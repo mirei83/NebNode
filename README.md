@@ -3,7 +3,7 @@ Quick Installscript for Nebulas Privatenet Node
 
 All Test are done on Vultr. Register if you want and power up a small VPS: https://www.vultr.com/?ref=7097618
 
-This is just a simple installscript for a NebulasNode. Do not use this for production Mainnet Nodes without checking for additional security!
+This is just a simple install script for a NebulasNode. Do not use this for production Mainnet Nodes without checking for additional security!
 
 
 
@@ -18,7 +18,7 @@ curl -sSL https://raw.githubusercontent.com/mirei83/NebNode/master/DeployNebulas
 2.) Start Node
 ------------------------
 ```shell
-./start-nebulas-LocalNode.sh
+./start-nebulas-node.sh
 ```
 
 

@@ -82,7 +82,7 @@ echo "########################"
 cd
 echo '#!/bin/bash' >> ./start-nebulas-node.sh
 echo "cd $GOPATH/src/github.com/nebulasio/go-nebulas"  >> ./start-nebulas-node.sh
-echo "$GOPATH/src/github.com/nebulasio/go-nebulas/neb -c $GOPATH/src/github.com/nebulasio/go-nebulas/conf/local/config.conf > /dev/null 2>&1 & " >> ./start-nebulas-node.sh
+echo "$GOPATH/src/github.com/nebulasio/go-nebulas/neb -c $GOPATH/src/github.com/nebulasio/go-nebulas/mainnet/conf/config.conf > /dev/null 2>&1 & " >> ./start-nebulas-node.sh
 chmod +x ./start-nebulas-node.sh
 
 
