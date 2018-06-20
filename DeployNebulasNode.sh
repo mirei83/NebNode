@@ -57,21 +57,37 @@ make deploy-v8
 make build
 mkdir conf/local
 cd conf/local
-wget https://raw.githubusercontent.com/mirei83/Nebulas/master/LocalTestNet/local/config.conf
-wget https://raw.githubusercontent.com/mirei83/Nebulas/master/LocalTestNet/local/genesis.conf
-wget https://raw.githubusercontent.com/mirei83/Nebulas/master/LocalTestNet/local/miner.conf
+wget https://raw.githubusercontent.com/mirei83/NebuEnv/master/local/config.conf
+wget https://raw.githubusercontent.com/mirei83/NebuEnv/master/local/genesis.conf
+wget https://raw.githubusercontent.com/mirei83/NebuEnv/master/local/miner.conf
 cd ~
 
 
 ### Create StartUp-Script
 
 echo "########################"
-echo "Creating Startup Miner Script"
+echo "Creating Privatenet-Node StartupScript"
 echo "########################"
 cd
-echo '#!/bin/bash' >> ./start-nebulas-LocalNode.sh
-echo "cd $GOPATH/src/github.com/nebulasio/go-nebulas"  >> ./start-nebulas-LocalNode.sh
-echo "$GOPATH/src/github.com/nebulasio/go-nebulas/neb -c $GOPATH/src/github.com/nebulasio/go-nebulas/conf/local/config.conf > /dev/null 2>&1 & " >> ./start-nebulas-LocalNode.sh
-echo "$GOPATH/src/github.com/nebulasio/go-nebulas/neb -c $GOPATH/src/github.com/nebulasio/go-nebulas/conf/local/miner.conf > /dev/null 2>&1 & " >> ./start-nebulas-LocalNode.sh
-chmod +x ./start-nebulas-LocalNode.sh
+echo '#!/bin/bash' >> ./start-nebulas-PrivateNet.sh
+echo "cd $GOPATH/src/github.com/nebulasio/go-nebulas"  >> ./start-nebulas-PrivateNet.sh
+echo "$GOPATH/src/github.com/nebulasio/go-nebulas/neb -c $GOPATH/src/github.com/nebulasio/go-nebulas/conf/local/config.conf > /dev/null 2>&1 & " >> ./start-nebulas-PrivateNet.sh
+echo "$GOPATH/src/github.com/nebulasio/go-nebulas/neb -c $GOPATH/src/github.com/nebulasio/go-nebulas/conf/local/miner.conf > /dev/null 2>&1 & " >> ./start-nebulas-PrivateNet.sh
+chmod +x ./start-nebulas-PrivateNet.sh
 
+
+echo "########################"
+echo "Creating Node StartupScript"
+echo "########################"
+cd
+echo '#!/bin/bash' >> ./start-nebulas-node.sh
+echo "cd $GOPATH/src/github.com/nebulasio/go-nebulas"  >> ./start-nebulas-node.sh
+echo "$GOPATH/src/github.com/nebulasio/go-nebulas/neb -c $GOPATH/src/github.com/nebulasio/go-nebulas/conf/local/config.conf > /dev/null 2>&1 & " >> ./start-nebulas-node.sh
+chmod +x ./start-nebulas-node.sh
+
+
+echo "######################################################"
+echo "######################################################"
+echo "To activate Node on startup, add this to your crontab"
+echo "@reboot root $HOME/.profile; $HOME/start-nebulas-node.sh"
+echo "######################################################"
